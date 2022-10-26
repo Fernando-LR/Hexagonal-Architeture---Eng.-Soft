@@ -17,6 +17,7 @@ Em uma arquitetura hexagonal, a comunicação entre as classes dos dois grupos �
 
 Visualmente, a arquitetura é representada por meio de dois hexágonos concêntricos. No hexágono interno, ficam as classes do domínio. No hexágono externo, ficam os adaptadores. Por fim, as classes de interface com o usuário, classes de tecnologia ou de sistemas externos ficam fora desses dois hexágonos.
 
+![Arquitetura Hexagonal](https://engsoftmoderna.info/artigos/figs/arquitetura-hexagonal.svg)
 ## Adaptadores e Portas
 Em uma Arquitetura Hexagonal, o termo porta designa as interfaces usadas para comunicação com as classes de domínio (veja que interface aqui significa interface de programação; por exemplo, uma interface de Java).
 
@@ -84,8 +85,8 @@ Os adaptadores são a parte externa do aplicativo, como GUI, API, DAO e Web, ele
 
 Os adaptadores facilitam a troca de uma camada do aplicativo, sendo necessário apenas adicionar um adaptador com uma porta de entrada ou saída(Parte 2.1 e 2.2).
 
-* **3.1: Adaptadores Primários**
-Adaptadores Primários, ou adaptadores de entrada, conduzem o aplicativo executando a sua parte principal utilizando as portas de entrada.
+* **3.1: Adaptadores Primários: **
+Ou adaptadores de entrada, conduzem o aplicativo executando a sua parte principal utilizando as portas de entrada.
 
 Para esse exemplo, vamos definir a classe PizzaRestContoller como um controlador REST como nosso adaptador primário. Ele fornece endpoints para criar e buscar pizzas e também implementa PizzaRestUI (Webview). Além disso, usa PizzaService (porta de entrada) para invocar diferentes métodos.
 ```
@@ -109,7 +110,7 @@ public class PizzaRestController implements PizzaRestUI {
 }
 ```
 * **3.2 Adaptadores Secundários:** 
-Adaptadores secundários, ou adaptadores de saída implementam a interface Esses adaptadores fornecem uma implementação para acessar os componentes secundários de um aplicativo, como bancos de dados, filas de mensagens, etc. Enquanto a camada de serviço implementa a porta de entrada, uma porta de saída é implementada usando a camada de persistência.
+Ou adaptadores de saída, implementam a interface Esses adaptadores fornecem uma implementação para acessar os componentes secundários de um aplicativo, como bancos de dados, filas de mensagens, etc. Enquanto a camada de serviço implementa a porta de entrada, uma porta de saída é implementada usando a camada de persistência.
 
 No nosso caso, PizzaRepoImpl é o adaptador de saída que implementa PizzaDAO (porta de saída).
 ```
