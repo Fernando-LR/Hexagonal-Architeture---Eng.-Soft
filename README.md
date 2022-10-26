@@ -21,7 +21,9 @@ Visualmente, a arquitetura é representada por meio de dois hexágonos concêntr
 Em uma Arquitetura Hexagonal, o termo porta designa as interfaces usadas para comunicação com as classes de domínio (veja que interface aqui significa interface de programação; por exemplo, uma interface de Java).
 
 Existem dois tipos de portas:
+
 * **Portas de entrada:** são interfaces usadas para comunicação de fora para dentro, isto é, quando uma classe externa precisa chamar um método de uma classe de domínio. Logo, essas portas declaram os serviços providos pelo sistema, isto é, serviços que o sistema oferece para o mundo exterior.
+
 * **Portas de saída:** são interfaces usadas para comunicação de dentro para fora, isto é, quando uma classe de domínio precisa chamar um método de uma classe externa. Logo, essas portas declaram os serviços requeridos pelo sistema, isto é, serviços do mundo exterior que são necessários para o funcionamento do sistema.
 
 O importante é que as portas são independentes de tecnologia. Portanto, elas estão localizadas no hexágono interior.
@@ -79,12 +81,14 @@ public interface PizzaRepo {
 
 ## Parte 3: Adaptadores
 Os adaptadores são a parte externa do aplicativo, como GUI, API, DAO e Web, eles se referem às classes de implementação de suas respectivas portas na arquitetura hexagonal, tendo sua interação com o aplicativo através das portas aprendidas na Parte 2.
+
 Os adaptadores facilitam a troca de uma camada do aplicativo, sendo necessário apenas adicionar um adaptador com uma porta de entrada ou saída(Parte 2.1 e 2.2).
 
 * **3.1: Adaptadores Primários**
 Adaptadores Primários, ou adaptadores de entrada, conduzem o aplicativo executando a sua parte principal utilizando as portas de entrada.
-Para esse exemplo, vamos definir a classe PizzaRestContoller como um controlador REST como nosso adaptador primário. Ele fornece endpoints para criar e buscar pizzas e também implementa PizzaRestUI (Webview). Além disso, usa PizzaService (porta de entrada) para invocar diferentes métodos.
 
+Para esse exemplo, vamos definir a classe PizzaRestContoller como um controlador REST como nosso adaptador primário. Ele fornece endpoints para criar e buscar pizzas e também implementa PizzaRestUI (Webview). Além disso, usa PizzaService (porta de entrada) para invocar diferentes métodos.
+```
 @RestController
 @RequestMapping(value="/pizza")
 public class PizzaRestController implements PizzaRestUI {
@@ -103,12 +107,12 @@ public class PizzaRestController implements PizzaRestUI {
             return pizzaService.loadPizza();
       }
 }
-
-
-### 3.2 Adaptadores Secundários: 
+```
+* **3.2 Adaptadores Secundários:** 
 Adaptadores secundários, ou adaptadores de saída implementam a interface Esses adaptadores fornecem uma implementação para acessar os componentes secundários de um aplicativo, como bancos de dados, filas de mensagens, etc. Enquanto a camada de serviço implementa a porta de entrada, uma porta de saída é implementada usando a camada de persistência.
-No nosso caso, PizzaRepoImpl é o adaptador de saída que implementa PizzaDAO (porta de saída).
 
+No nosso caso, PizzaRepoImpl é o adaptador de saída que implementa PizzaDAO (porta de saída).
+```
 @Repository
 public class PizzaRepoImpl implementa PizzaDAO {
       private Map<String, Pizza> pizzaStore = new HashMap<String, Pizza>();
@@ -125,21 +129,22 @@ public class PizzaRepoImpl implementa PizzaDAO {
             return pizzaStore.values().stream().collect(Collectors.toList());
       }
 }
-
+```
 Após os adaptadores e portas serem criados, é possível fazer o teste através usando a API.
 
 Para isso iremos testar o POST através do link: 
 http://localhost:8080/pizza-service/pizza/
-
+```
 {
    "name" : "Margherita",
    "price": "25",
    "toppings" : ["tomate","cebola","pepino","jalapeno"]
 }
+```
 
 Além, disso podemos testar o GET através do link:
 http://localhost:8080/pizza-service/pizza/Margherita
-
+```
 {
    "name": "Margherita",
    "price": 25,
@@ -150,5 +155,6 @@ http://localhost:8080/pizza-service/pizza/Margherita
        "jalapeno"
    ]
 }
+```
 ## 4: Conclusão
 Podemos concluir, que a arquitetura hexagonal é utilizada para simplificar o design do aplicativo tendo partes separadas para controlar os componentes externos e internos, possuindo um alto grau de desacoplamento. Além do fato de, por ser baseada em portas, permite a fácil adaptação de novas utilidades e protocolos do aplicativo no futuro.
