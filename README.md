@@ -164,10 +164,10 @@ Podemos concluir, que a arquitetura hexagonal é utilizada para simplificar o de
 
 Membros: 
 
-FERNANDO LORENZETO RODRIGUES @Fernando-LR
+FERNANDO LORENZETO RODRIGUES [@Fernando-LR](https://www.github.com/Fernando-LR)
 
-JOÃO MARCELO ROSSI DINIZ CERQUEIRA @r0ssiii
+JOÃO MARCELO ROSSI DINIZ CERQUEIRA [@r0ssiii](https://www.github.com/r0ssiii)
 
-LUIS FELIPE RODRIGUES DOS SANTOS @sluissantos
+LUIS FELIPE RODRIGUES DOS SANTOS [@sluissantos](https://www.github.com/sluissantos)
 
-RAFAEL ASSUNÇÃO LADEIRA TORGA @rafaalt
+RAFAEL ASSUNÇÃO LADEIRA TORGA [@rafaalt](https://www.github.com/rafaalt)
