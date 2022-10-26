@@ -85,7 +85,7 @@ Os adaptadores são a parte externa do aplicativo, como GUI, API, DAO e Web, ele
 
 Os adaptadores facilitam a troca de uma camada do aplicativo, sendo necessário apenas adicionar um adaptador com uma porta de entrada ou saída(Parte 2.1 e 2.2).
 
-* **3.1: Adaptadores Primários: **
+* **3.1: Adaptadores Primários:**
 Ou adaptadores de entrada, conduzem o aplicativo executando a sua parte principal utilizando as portas de entrada.
 
 Para esse exemplo, vamos definir a classe PizzaRestContoller como um controlador REST como nosso adaptador primário. Ele fornece endpoints para criar e buscar pizzas e também implementa PizzaRestUI (Webview). Além disso, usa PizzaService (porta de entrada) para invocar diferentes métodos.
