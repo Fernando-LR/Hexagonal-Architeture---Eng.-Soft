@@ -17,7 +17,7 @@ Em uma arquitetura hexagonal, a comunicação entre as classes dos dois grupos �
 
 Visualmente, a arquitetura é representada por meio de dois hexágonos concêntricos. No hexágono interno, ficam as classes do domínio. No hexágono externo, ficam os adaptadores. Por fim, as classes de interface com o usuário, classes de tecnologia ou de sistemas externos ficam fora desses dois hexágonos.
 
-![Arquitetura Hexagonal](https://engsoftmoderna.info/artigos/figs/arquitetura-hexagonal.svg)
+![Arquitetura Hexagonal - 1](https://engsoftmoderna.info/artigos/figs/arquitetura-hexagonal.svg)
 ## Adaptadores e Portas
 Em uma Arquitetura Hexagonal, o termo porta designa as interfaces usadas para comunicação com as classes de domínio (veja que interface aqui significa interface de programação; por exemplo, uma interface de Java).
 
@@ -35,6 +35,7 @@ Daí a necessidade de componentes localizados no hexágono mais externo da arqui
 * Eles recebem chamadas de métodos vindas de fora do sistema e encaminham essas chamadas para métodos adequados das portas de entrada.
 * Eles recebem chamadas vindas de dentro do sistema, isto é, das classes de domínio, e as direcionam para um sistema externo, tais como um banco de dados, um outro sistema da organização ou mesmo de terceiros.
 
+![Arquitetura Hexagonal - 2](https://miro.medium.com/max/640/1*9LELTYyRhtTU4oCvpZxL2Q.png)
 
 ## Praticando
 
