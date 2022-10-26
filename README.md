@@ -1,6 +1,6 @@
 # Hexagonal-Architeture---Eng.-Soft
 
-Um resumo sobre Arquitetura Hexagonal
+**Um resumo sobre Arquitetura Hexagonal**
 O conceito de Arquitetura Hexagonal foi proposto por Alistair Cockburn, em meados dos anos 90, em um artigo postado na primeira wiki que foi desenvolvida, chamada WikiWikiWeb (cujos artigos tratavam principalmente de temas relacionados com Engenharia de Software).
 Os objetivos de uma Arquitetura Hexagonal são parecidos com os de uma Arquitetura Limpa, onde a ideia é construir sistemas que favorecem reusabilidade de código, alta coesão, baixo acoplamento, independência de tecnologia e que são mais fáceis de serem testados.
 Uma Arquitetura Hexagonal divide as classes de um sistema em dois grupos principais:
