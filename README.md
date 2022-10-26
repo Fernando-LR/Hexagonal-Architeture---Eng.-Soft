@@ -1,8 +1,8 @@
-#Hexagonal Architeture | Eng. Soft
+# Hexagonal Architeture
 
-**Um resumo sobre Arquitetura Hexagonal**
+## Um resumo sobre Arquitetura Hexagonal
 O conceito de Arquitetura Hexagonal foi proposto por Alistair Cockburn, em meados dos anos 90, em um artigo postado na primeira wiki que foi desenvolvida, chamada WikiWikiWeb (cujos artigos tratavam principalmente de temas relacionados com Engenharia de Software).
-Os objetivos de uma Arquitetura Hexagonal são parecidos com os de uma Arquitetura Limpa, onde a ideia é construir sistemas que favorecem reusabilidade de código, alta coesão, baixo acoplamento, independência de tecnologia e que são mais fáceis de serem testados.
+Os objetivos de uma Arquitetura Hexagonal são parecidos com os de uma Arquitetura Limpa, onde a ideia é construir sistemas que favorecem a reusabilidade de código, alta coesão, baixo acoplamento, independência de tecnologia e que são mais fáceis de serem testados.
 Uma Arquitetura Hexagonal divide as classes de um sistema em dois grupos principais:
 Classes de domínio, isto é, diretamente relacionadas com o negócio do sistema.
 Classes relacionadas com infraestrutura, tecnologias e responsáveis pela integração com sistemas externos (tais como bancos de dados).
@@ -11,7 +11,7 @@ Assim, as classes de domínio não conhecem as tecnologias – bancos de dados, 
 Em uma arquitetura hexagonal, a comunicação entre as classes dos dois grupos é mediada por adaptadores, isto é, por classes que implementam o padrão de projeto de mesmo nome.
 Visualmente, a arquitetura é representada por meio de dois hexágonos concêntricos. No hexágono interno, ficam as classes do domínio. No hexágono externo, ficam os adaptadores. Por fim, as classes de interface com o usuário, classes de tecnologia ou de sistemas externos ficam fora desses dois hexágonos.
 
-Adaptadores e Portas
+## Adaptadores e Portas
 Em uma Arquitetura Hexagonal, o termo porta designa as interfaces usadas para comunicação com as classes de domínio (veja que interface aqui significa interface de programação; por exemplo, uma interface de Java).
 Existem dois tipos de portas:
 Portas de entrada: são interfaces usadas para comunicação de fora para dentro, isto é, quando uma classe externa precisa chamar um método de uma classe de domínio. Logo, essas portas declaram os serviços providos pelo sistema, isto é, serviços que o sistema oferece para o mundo exterior.
@@ -24,7 +24,7 @@ encaminham essas chamadas para métodos adequados das portas de entrada.
 Eles recebem chamadas vindas de dentro do sistema, isto é, das classes de domínio, e as direcionam para um sistema externo, tais como um banco de dados, um outro sistema da organização ou mesmo de terceiros.
 
 
-Praticando
+## Praticando
 
 Para entender melhor como é uma arquitetura hexagonal, vamos considerar um exemplo de uma aplicação para uma pizzaria. Nessa aplicação, devemos ter as seguintes características:
 Lista de todas as pizzas disponíveis
@@ -42,7 +42,7 @@ public class Pizza {
     // Construtor
 }
 
-Parte 2: Portas
+### Parte 2: Portas
 As portas na arquitetura hexagonal referem-se às interfaces que permitem o fluxo de entrada ou saída, sendo assim elas são divididas em dois tipos, portas de entrada e portas de saída. 
 
 2.1: Porta de Entrada
@@ -54,7 +54,7 @@ public interface PizzaService {
       public List<Pizza> loadPizza();
 }
 
-2.2: Porta de Saída
+### 2.2: Porta de Saída
 As portas de saída, por sua vez, são usadas para conectar com repositórios externos, como o acesso ao banco de dados. Para esse exemplo, vamos definir o PizzaDAO.
 
 public interface PizzaRepo {
@@ -63,11 +63,11 @@ public interface PizzaRepo {
       public List<Pizza> getAllPizza();
 }
 
-Parte 3: Adaptadores
-Os adaptadores são a parte externa do aplicativo, como GUI, API, DAO e Web, eles se referem-se às classes de implementação de suas respectivas portas na arquitetura hexagonal, tendo sua interação com o aplicativo através das portas aprendidas na Parte 2.
+## Parte 3: Adaptadores
+Os adaptadores são a parte externa do aplicativo, como GUI, API, DAO e Web, eles se referem às classes de implementação de suas respectivas portas na arquitetura hexagonal, tendo sua interação com o aplicativo através das portas aprendidas na Parte 2.
 Os adaptadores facilitam a troca de uma camada do aplicativo, sendo necessário apenas adicionar um adaptador com uma porta de entrada ou saída(Parte 2.1 e 2.2).
 
-3.1: Adaptadores Primários
+### 3.1: Adaptadores Primários
 Adaptadores Primários, ou adaptadores de entrada, conduzem o aplicativo executando a sua parte principal utilizando as portas de entrada.
 Para esse exemplo, vamos definir a classe PizzaRestContoller como um controlador REST como nosso adaptador primário. Ele fornece endpoints para criar e buscar pizzas e também implementa PizzaRestUI (Webview). Além disso, usa PizzaService (porta de entrada) para invocar diferentes métodos.
 
@@ -91,7 +91,7 @@ public class PizzaRestController implements PizzaRestUI {
 }
 
 
-3.2 Adaptadores Secundários: 
+### 3.2 Adaptadores Secundários: 
 Adaptadores secundários, ou adaptadores de saída implementam a interface Esses adaptadores fornecem uma implementação para acessar os componentes secundários de um aplicativo, como bancos de dados, filas de mensagens, etc. Enquanto a camada de serviço implementa a porta de entrada, uma porta de saída é implementada usando a camada de persistência.
 No nosso caso, PizzaRepoImpl é o adaptador de saída que implementa PizzaDAO (porta de saída).
 
@@ -136,6 +136,5 @@ http://localhost:8080/pizza-service/pizza/Margherita
        "jalapeno"
    ]
 }
-
-4: Conclusão
-Podemos concluir, que a arquitetura hexagonal é utilizada para simplificar o desing do aplicativo tendo partes separadas para controlar os componentes externos e internos, possuindo um alto grau de desacoplamento. Além do fato de, por ser baseada em portas, permite a fácil adaptação de novos utilidades e protocolos do aplicativo no futuro.
+## 4: Conclusão
+Podemos concluir, que a arquitetura hexagonal é utilizada para simplificar o design do aplicativo tendo partes separadas para controlar os componentes externos e internos, possuindo um alto grau de desacoplamento. Além do fato de, por ser baseada em portas, permite a fácil adaptação de novas utilidades e protocolos do aplicativo no futuro.
