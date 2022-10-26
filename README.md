@@ -1,4 +1,4 @@
-# Hexagonal-Architeture---Eng.-Soft
+#Hexagonal Architeture | Eng. Soft
 
 **Um resumo sobre Arquitetura Hexagonal**
 O conceito de Arquitetura Hexagonal foi proposto por Alistair Cockburn, em meados dos anos 90, em um artigo postado na primeira wiki que foi desenvolvida, chamada WikiWikiWeb (cujos artigos tratavam principalmente de temas relacionados com Engenharia de Software).
