@@ -159,3 +159,14 @@ http://localhost:8080/pizza-service/pizza/Margherita
 ```
 ## 4: Conclusão
 Podemos concluir, que a arquitetura hexagonal é utilizada para simplificar o design do aplicativo tendo partes separadas para controlar os componentes externos e internos, possuindo um alto grau de desacoplamento. Além do fato de, por ser baseada em portas, permite a fácil adaptação de novas utilidades e protocolos do aplicativo no futuro.
+
+
+Membros: 
+
+FERNANDO LORENZETO RODRIGUES @Fernando-LR
+
+JOÃO MARCELO ROSSI DINIZ CERQUEIRA @
+
+LUIS FELIPE RODRIGUES DOS SANTOS @
+
+RAFAEL ASSUNÇÃO LADEIRA TORGA @rafaalt
